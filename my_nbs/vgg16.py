@@ -54,10 +54,12 @@ class Vgg16:
             The file is downloaded only if it not already in the cache.
         """
         fname = 'imagenet_class_index.json'
+        print("Getting Models")
         fpath = get_file(fname, self.FILE_PATH + fname, cache_subdir='models')
         with open(fpath) as f:
             class_dict = json.load(f)
         self.classes = [class_dict[str(i)][1] for i in range(len(class_dict))]
+        print("models done")
 
     def predict(self, imgs, details=False):
         """
@@ -134,6 +136,7 @@ class Vgg16:
 
         fname = 'vgg16.h5'
         model.load_weights(get_file(fname, self.FILE_PATH + fname, cache_subdir='models'))
+        print("Weights loaded")
 
     def get_batches(self, path, gen=image.ImageDataGenerator(), shuffle=True, batch_size=8, class_mode='categorical'):
         """
@@ -201,6 +204,7 @@ class Vgg16:
             Fits the model on data yielded batch-by-batch by a Python generator.
             See Keras documentation: https://keras.io/models/model/
         """
+        print("Starting to fit data")
         self.model.fit_generator(batches, samples_per_epoch=batches.nb_sample, nb_epoch=nb_epoch,
                                  validation_data=val_batches, nb_val_samples=val_batches.nb_sample)
 
