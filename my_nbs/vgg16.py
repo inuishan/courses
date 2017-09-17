@@ -38,7 +38,7 @@ def vgg_preprocess(x):
     return x[:, ::-1]  # reverse axis rgb->bgr
 
 
-class Vgg16():
+class Vgg16:
     """
         The VGG 16 Imagenet model
     """
