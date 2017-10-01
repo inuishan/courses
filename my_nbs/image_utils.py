@@ -10,7 +10,7 @@ def profile_images(dir_path):
     :param dir_path: The directory path of the images
     :return: ImageProdile containing max_dimensions, min_dimension, avg_dimension
     """
-    onlyfiles = [f for f in listdir(dir_path) if isfile(join(dir_path, f))]
+    # onlyfiles = [f for f in listdir(dir_path) if isfile(join(dir_path, f))]
     col = imread_collection(dir_path)
     print(col)
     return col
